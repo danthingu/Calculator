@@ -20,7 +20,6 @@ namespace Calculator
         /// </summary>
         enum LastOperation
         { None, Add, Subtract, Multiply, Divide };
-        double num;
 
         AirthmeticModel Model;
         Double tempNumber;
