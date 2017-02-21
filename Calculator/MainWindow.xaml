@@ -1,0 +1,41 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Calculator"
+        Title="MainWindow" Height="356.014" Width="514.176">
+    <Window.DataContext>
+        <!-- Declaratively create an instance of our SongViewModel -->
+        <local:AirthmeticViewModel />
+    </Window.DataContext>
+    <DockPanel HorizontalAlignment="Left" Height="290" LastChildFill="False" Margin="10,10,0,0" VerticalAlignment="Top" Width="482">
+        <TextBox DockPanel.Dock="Top" Height="53" IsReadOnly="True" Text="{Binding updateNumber}" MaxLength="15"></TextBox>
+        <UniformGrid Name="UGrid" Rows="5" Columns="4" Width="481">
+            <Button x:Name="Clear"  Content="C" Margin="5,5,5,0" Click="Clear_Click" />
+            <Button x:Name="btn7"  Content="7" Margin="0,5,0,0" Command="{Binding PressButton7Command}" />
+            <Button x:Name="btn8"  Content="8" Margin="5,5,0,0" Command="{Binding PressButton8Command}"/>
+            <Button x:Name="btn9"  Content="9" Margin="5,5,0,0" Command="{Binding PressButton9Command}"/>
+            <Button x:Name="Divide"  Content="/" Margin="5,5,5,0" Click="Divide_Click"/>
+
+            <Button x:Name="btn4"  Content="4" Margin="0,5,0,0" Command="{Binding PressButton4Command}"/>
+            <Button x:Name="btn5"  Content="5" Margin="5,5,0,0" Command="{Binding PressButton5Command}"/>
+            <Button x:Name="btn6"  Content="6" Margin="5,5,0,0" Command="{Binding PressButton6Command}"/>
+            <Button x:Name="Multiply"  Content="*" Margin="5,5,5,0" Click="Multiply_Click"/>
+
+
+
+            <Button  Name="btn1" Content="1" Margin="0,5,0,0" Command="{Binding PressButton1Command}" />
+            <Button x:Name="btn2"  Content="2" Margin="5,5,0,0" Command="{Binding PressButton2Command}"/>
+            <Button x:Name="btn3"  Content="3" Margin="5,5,0,0" Command="{Binding PressButton3Command}"/>
+
+
+            <Button x:Name="Subtract"  Content="-" Margin="5,5,5,0" Click="Subtract_Click"/>
+
+            <Button x:Name="btn0"  Content="0" Margin="0,5,0,0" Command="{Binding PressButton0Command}"/>
+            <Button x:Name="Add"  Content="+" Margin="5,5,0,0" Click="Add_Click"/>
+            <Button x:Name="equal"  Content="=" Margin="5,5,0,0" Click="equal_Click"/>
+
+        </UniformGrid>
+    </DockPanel>
+
+
+</Window>
