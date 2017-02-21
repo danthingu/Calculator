@@ -46,7 +46,14 @@ namespace Calculator
         public ICommand PressButton8Command { get { return _pressButton8; } }
         private RelayCommand _pressButton9;
         public ICommand PressButton9Command { get { return _pressButton9; } }
-
+        private RelayCommand _multiply;
+        public ICommand MultiplyCommand { get { return _multiply; } }
+        private RelayCommand _divide;
+        public ICommand DivideCommand { get { return _divide; } }
+        private RelayCommand _add;
+        public ICommand AddCommand { get { return _add; } }
+        private RelayCommand _subtract;
+        public ICommand SubtractCommand { get { return _subtract; } }
         public AirthmeticViewModel()
         {         
             Model = new AirthmeticModel();
@@ -67,6 +74,10 @@ namespace Calculator
             _pressButton7 = new RelayCommand(OnPressButton7Command, CanPressButton7);
             _pressButton8 = new RelayCommand(OnPressButton8Command, CanPressButton8);
             _pressButton9 = new RelayCommand(OnPressButton9Command, CanPressButton9);
+            _add = new RelayCommand(OnAddCommand, CanAddCommand);
+            _subtract = new RelayCommand(OnSubtractCommand, CanSubtractCommand);
+            _multiply = new RelayCommand(OnMultiplyCommand, CanMultiplyCommand);
+            _divide = new RelayCommand(OnDivideCommand, CanDivideCommand);
         }
         //0
         private bool CanPressButton0()
@@ -182,11 +193,15 @@ namespace Calculator
             }
         }
 
-        public void add()
+        public bool CanAddCommand()
+        {
+            return true;
+        }
+        public void OnAddCommand()
         {
             if (lastOperation == LastOperation.Add)
             {
-                double sum = Model.add(updateNumber, tempNumber);
+                double sum = updateNumber + tempNumber;
                 clear();
                 updateNumber = sum;           
             }
@@ -195,12 +210,16 @@ namespace Calculator
           
            lastOperation = LastOperation.Add;
         }
-        public void subtract()
+        public bool CanSubtractCommand()
+        {
+            return true;
+        }
+        public void OnSubtractCommand()
         {           
             
             if (lastOperation == LastOperation.Subtract)
             {
-                double sum = Model.subtract(tempNumber, updateNumber);
+                double sum = tempNumber - updateNumber;
                 clear();
                 updateNumber = sum;              
             }
@@ -208,12 +227,15 @@ namespace Calculator
             bNewEntry = true;       
             lastOperation = LastOperation.Subtract;
         }
-
-        public void Multiply()
+        public bool CanMultiplyCommand()
+        {
+            return true;
+        }
+        public void OnMultiplyCommand()
         {
             if (lastOperation == LastOperation.Multiply)
             {
-                double sum = Model.Multiply(tempNumber, updateNumber);
+                double sum = tempNumber * updateNumber;
                 clear();
                 updateNumber = sum;
             }
@@ -221,12 +243,15 @@ namespace Calculator
             bNewEntry = true;
             lastOperation = LastOperation.Multiply;
         }
-
-        public void Divide()
+        public bool CanDivideCommand()
+        {
+            return true;
+        }
+        public void OnDivideCommand()
         {
             if (lastOperation == LastOperation.Divide)
             {
-                double sum = Model.Divide(tempNumber, updateNumber);
+                double sum = tempNumber/ updateNumber;
                 clear();
                 updateNumber = sum;
             }
@@ -253,13 +278,13 @@ namespace Calculator
         public void equal()
         {
             if (lastOperation == LastOperation.Add)
-                add();
+                OnAddCommand();
             else if (lastOperation == LastOperation.Multiply)
-                Multiply();
+                OnMultiplyCommand();
             else if (lastOperation == LastOperation.Divide)
-                Divide();
+                OnDivideCommand();
             else if (lastOperation == LastOperation.Subtract)
-                subtract();
+                OnSubtractCommand();
             lastOperation = LastOperation.None;
         }
         public event PropertyChangedEventHandler PropertyChanged;

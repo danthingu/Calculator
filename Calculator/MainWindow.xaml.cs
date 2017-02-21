@@ -28,17 +28,7 @@ namespace Calculator
             InitializeComponent();           
             avm = (AirthmeticViewModel)base.DataContext;
         }
-        void SetViewModel(string Content)
-        {
-            avm.updateNumber = double.Parse(Content.ToString());
-        }
-       
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            avm.add();
-        }
-
+               
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             avm.clearAll();
@@ -47,21 +37,6 @@ namespace Calculator
         private void equal_Click(object sender, RoutedEventArgs e)
         {
             avm.equal();
-        }
-
-        private void Multiply_Click(object sender, RoutedEventArgs e)
-        {
-            avm.Multiply();
-        }
-
-        private void Subtract_Click(object sender, RoutedEventArgs e)
-        {
-            avm.subtract();
-        }
-
-        private void Divide_Click(object sender, RoutedEventArgs e)
-        {
-            avm.Divide();
-        }
+        }       
     }
 }
