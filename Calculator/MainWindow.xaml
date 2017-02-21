@@ -7,7 +7,14 @@
         <!-- Declaratively create an instance of our SongViewModel -->
         <local:AirthmeticViewModel />
     </Window.DataContext>
-    <DockPanel HorizontalAlignment="Left" Height="290" LastChildFill="False" Margin="10,10,0,0" VerticalAlignment="Top" Width="482">
+    <DockPanel
+        Background="AliceBlue" 
+        HorizontalAlignment="Left" 
+        Height="290" 
+        LastChildFill="False" 
+        Margin="10,10,0,0" 
+        VerticalAlignment="Top" 
+        Width="482">
         <TextBox DockPanel.Dock="Top" Height="53" IsReadOnly="True" Text="{Binding updateNumber}" MaxLength="15"></TextBox>
         <UniformGrid Name="UGrid" Rows="5" Columns="4" Width="481">
             <Button x:Name="Clear"  Content="C" Margin="5,5,5,0" Click="Clear_Click" />

@@ -13,7 +13,7 @@ namespace Calculator
     /// <summary>
     /// View model
     /// </summary>
-    class AirthmeticViewModel : INotifyPropertyChanged
+    class AirthmeticViewModel : ViewModelBase, INotifyPropertyChanged
     {
         /// <summary>
         /// Stores the last operation performed
@@ -287,16 +287,6 @@ namespace Calculator
                 OnSubtractCommand();
             lastOperation = LastOperation.None;
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void RaisePropertyChanged(string propertyName)
-        {
-            // take a copy to prevent thread issues
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+       
     }
 }
